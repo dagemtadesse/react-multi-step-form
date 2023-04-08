@@ -17,7 +17,7 @@ export const Step = ({
       >
         {step}
       </div>
-      <div className="uppercase tracking-wider">
+      <div className="uppercase tracking-wider hidden md:block">
         <h2 className="text-lightgray  text-xs">Step {step}</h2>
         <p className="text-white font text-sm mt-2">{title}</p>
       </div>

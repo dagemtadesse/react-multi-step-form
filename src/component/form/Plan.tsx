@@ -64,7 +64,7 @@ export const Plan = forwardRef((props, ref: any) => {
         description="You have the option of monthly or yearly billing"
       />
       <form onSubmit={handleSubmit}>
-        <div className="mt-10 flex gap-4">
+        <div className="mt-10 flex flex-col md:flex-row gap-4">
           <CheckPlan
             iconSrc="/icon-arcade.svg"
             title="Arcade"
@@ -125,15 +125,17 @@ const CheckPlan = ({
 
   return (
     <div
-      className={`border border-lightgray p-4 rounded-lg w-[138px] hover:bg-magnolia ${
+      className={`border border-lightgray p-4 rounded-lg w-full md:w-[138px] hover:bg-magnolia flex md:flex-col items-center gap-4 md:items-start ${
         selected ? "border-purplishblue bg-magnolia" : ""
       } hover:border-purplishblue`}
       onClick={setSelected}
     >
       <img src={iconSrc} />
-      <h2 className="mt-6 text-marineblue font-bold">{title}</h2>
-      <p className="text-coolgray font-light text-sm mt-2">{`$${price[frequency]}/${suffix}`}</p>
-      {sale && <p className="text-marineblue text-sm mt-2">2 month free</p>}
+      <div>
+        <h2 className="md:mt-6 text-marineblue font-bold">{title}</h2>
+        <p className="text-coolgray font-light text-sm mt-2">{`$${price[frequency]}/${suffix}`}</p>
+        {sale && <p className="text-marineblue text-sm mt-2">2 month free</p>}
+      </div>
     </div>
   );
 };

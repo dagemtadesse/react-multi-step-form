@@ -1,13 +1,17 @@
+import { Link } from "react-router-dom";
 import { FormTitle } from "../FormTitle";
 import { AddOn } from "./AddOns";
 import { loadFromLocal } from "./PersonalInfo";
 import { billing, BillingPlan } from "./Plan";
 
 export const Summary = () => {
-  const { plan, billing : frequency } = loadFromLocal<BillingPlan>("billing-plan", {
-    plan: "arcade",
-    billing: "monthly",
-  });
+  const { plan, billing: frequency } = loadFromLocal<BillingPlan>(
+    "billing-plan",
+    {
+      plan: "arcade",
+      billing: "monthly",
+    }
+  );
 
   const addons = loadFromLocal<AddOn>("add-ons", {
     addons: [],
@@ -33,7 +37,9 @@ export const Summary = () => {
             <h2 className="text-marineblue font-medium capitalize">
               {plan} ({frequency})
             </h2>
-            <p className="underline text-coolgray text-sm">Change</p>
+            <p className="underline text-coolgray text-sm">
+              <Link to="?step=2">Change</Link>
+            </p>
           </div>
           <p className="text-marineblue font-bold">
             {billing[plan][frequency]}/{suffix}
@@ -41,7 +47,7 @@ export const Summary = () => {
         </div>
 
         {addons.addons.map((addon) => (
-          <div className="flex justify-between items-center py-2 text-sm">
+          <div className="flex justify-between items-center py-2 text-sm" key={addon}>
             <div>
               <h2 className="text-coolgray">{billing[addon].name}</h2>
             </div>
@@ -56,7 +62,9 @@ export const Summary = () => {
         <div>
           <h2 className="text-coolgray">Total (per {frequency})</h2>
         </div>
-        <p className="text-purplishblue text-lg ">+${total}/{suffix}</p>
+        <p className="text-purplishblue text-lg ">
+          +${total}/{suffix}
+        </p>
       </div>
     </>
   );

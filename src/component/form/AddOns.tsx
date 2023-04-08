@@ -115,9 +115,9 @@ const AddOnItem = ({
       </div>
       <div className="grow">
         <h2 className="text-marineblue font-medium">{title}</h2>
-        <p className="font-light text-coolgray mt-1">{description}</p>
+        <p className="font-light text-coolgray mt-1 text-sm">{description}</p>
       </div>
-      <p className="text-purplishblue">{`$${price[frequency]}/${suffix}`}</p>
+      <p className="text-purplishblue text-sm">{`$${price[frequency]}/${suffix}`}</p>
     </div>
   );
 };

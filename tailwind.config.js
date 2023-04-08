@@ -19,6 +19,7 @@ export default {
       },
       backgroundImage: {
         sidebarBgDesktop: 'url("/bg-sidebar-desktop.svg")',
+        sidebarBgMobile: 'url("/bg-sidebar-mobile.svg")',
       },
       fontFamily: {
         'ubuntu': "Ubuntu"

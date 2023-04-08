@@ -28,26 +28,26 @@ function App() {
   };
 
   return (
-    <div className="bg-white p-4 shadow-xl max-w-[940px] mx-auto my-[62px] flex rounded-[18px]">
-      <div className="shrink-0 p-[30px] bg-sidebarBgDesktop bg-no-repeat  basis-[275px] bg-strech min-h-[570px] flex flex-col gap-4 rounded-[18px]">
+    <div className="md:bg-white md:p-4 shadow-none md:shadow-xl max-w-[940px] mx-auto md:my-[62px] flex flex-col  md:flex-row md:rounded-[18px]">
+      <div className="shrink-0 p-[30px] md:bg-sidebarBgDesktop bg-sidebarBgMobile bg-no-repeat bg-cover md:basis-[275px] bg-strech md:min-h-[570px] flex md:flex-col gap-4 md:rounded-[18px] justify-center md:justify-start pb-[104px]">
         <Step step={1} title="Your info" active={current == 1} />
         <Step step={2} title="Select plan" active={current == 2} />
         <Step step={3} title="Add-ons" active={current == 3} />
         <Step step={4} title="Summary" active={current == 4} />
       </div>
-      <div className="px-24 grow flex flex-col">
-        <div className="grow">
+      <div className="md:px-24 grow flex flex-col  -mt-[74px] md:mt-0">
+        <div className="grow bg-white rounded-xl shadow-xl md:shadow-none md:mx-0 px-8 md:px-0 py-8 md:py-0 mx-4">
           {current == 1 && <PersonalInfo ref={submitbutton} />}
           {current == 2 && <Plan ref={submitbutton} />}
           {current == 3 && <AddOns ref={submitbutton} />}
           {current == 4 && (completed ? <Thankyou /> : <Summary />)}
         </div>
-        <div className="flex justify-between flex-row-reverse">
-          {!completed && (
+        {!completed && (
+          <div className="flex justify-between flex-row-reverse bg-white px-4 md:px-4 mt-4 md:mt-16 py-4 md:py-0">
             <>
               {current != 4 && (
                 <button
-                  className="self-end bg-marineblue text-white py-3 px-6 rounded-lg tracking-wider text-base mt-16"
+                  className="self-end bg-marineblue text-white py-3 px-6 rounded-lg tracking-wider text-base "
                   onClick={() => {
                     submitbutton.current?.click();
                   }}
@@ -58,7 +58,7 @@ function App() {
 
               {current == 4 && (
                 <button
-                  className="self-end bg-purplishblue text-white py-3 px-6 rounded-lg tracking-wider text-base mt-16"
+                  className="self-end bg-purplishblue text-white py-3 px-6 rounded-lg tracking-wider text-base"
                   onClick={() => {
                     navigate("?step=4&completed=true");
                   }}
@@ -69,15 +69,15 @@ function App() {
 
               {current != 1 && (
                 <button
-                  className="self-end  text-coolgray p-3 rounded-lg tracking-wider text-base mt-16"
+                  className="self-end  text-coolgray p-3 rounded-lg tracking-wider text-base"
                   onClick={goBack}
                 >
                   Go Back
                 </button>
               )}
             </>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );
